@@ -250,77 +250,15 @@ input_shape2 =(one_enac.shape[1],one_enac.shape[2])
 # print(rf_bo.max['params'])
 from sklearn.model_selection import StratifiedKFold
 
-# seed=7
-# np.random.seed(seed)
-# x_train, x_val, y_train, y_val=train_test_split(one_enac, y_data, test_size=0.2, random_state=7)
-#
-# models = SharedDeepCNNwithShape(shape1=input_shape2,)
-# models.save('../final_model/model/highway/5one_enactryyuanshifinalmodel' + str(1) + '.h5')
 
-for l in range(1,3):
-    seed = 7
-    np.random.seed(seed)
-    x_train, x_val, y_train, y_val = train_test_split(one_enac, y_data, test_size=0.2, random_state=7)
-    models = SharedDeepCNNwithShape(shape1=input_shape2, )
-    # KF = StratifiedKFold(n_splits=5, shuffle=True, random_state=seed)
-    pred=models.predict(x_val)
-    accur=acc(y_val,pred)
-    if accur>0.88:
-        models.save('../final_model/model/highway_M/'+str(motif)+'one_enactrymodel'+str(accur)+'.h5')
-        print('model save')
-# KF= StratifiedKFold(n_splits=5, shuffle=True, random_state=seed)
-#
-# preds=[]
-# # for train_index, val_index in KF.split(one_enac, y_data):
-# #     x_train, x_val = one_enac[train_index], one_enac[val_index]
-# #     y_train, y_val = y_data[train_index], y_data[val_index]
-# #     # s_train,s_val  = BPB_onehot[train_index],BPB_onehot[val_index]
-# #
-# #
-# #     models = SharedDeepCNNwithShape(shape2=input_shape2,shape3=input_shape3)
-# #     predict = models.predict([x_val])
-# #     preds.append(predict)
-# j=1
-# for train_index, val_index in KF.split(one_enac, y_data):
-#     x_train, x_val = one_enac[train_index], one_enac[val_index]
-#     y_train, y_val = y_data[train_index], y_data[val_index]
-#     # s_train,s_val  = BPB_onehot[train_index],BPB_onehot[val_index]
-#
-#
-#     models = SharedDeepCNNwithShape(shape1=input_shape2,)
-#     models.save('../final_model/model/highway/one_enactryyuanshifinalmodel' + str(j) + '.h5')
-#     print(' models.save(../final_model/model/highway/one_enactryyuanshifinalmodel')
-#     j = j + 1
-#     predict = models.predict([x_val])
-#     preds.append(predict)
-# SN = []
-# SP = []
-# ACC = []
-# MCC = []
-# Precisions = []
-# F1_scores = []
-# AUC = []
-# for pred in preds:
-#     TP, FP, FN, TN, Sn, Sp, Acc, Mcc, Precision, F1_score, aucs=Twoclassfy_evalu1(y_val, pred)
-#     SN.append(Sn)
-#     SP.append(Sp)
-#     ACC.append(Acc)
-#     MCC.append(Mcc)
-#     Precisions.append(Precision)
-#     F1_scores.append(F1_score)
-#     AUC.append(aucs)
-# meanSN = np.mean(SN)
-# meanSP = np.mean(SP)
-# meanACC = np.mean(ACC)
-# meanPrecision = np.mean(Precisions)
-# meanF1_score = np.mean(F1_scores)
-# meanMCC = np.mean(MCC)
-# meanAUC=np.mean(AUC)
-# print("meanSN",meanSN)
-# print("meanSP",meanSP)
-# print("meanACC",meanACC)
-# print('meanPrecision',meanPrecision)
-# print('meanF1_score',meanF1_score)
-# print("meanMCC",meanMCC)
-# print("meanAUC",meanAUC)
+  
+x_train, x_val, y_train, y_val = train_test_split(one_enac, y_data, test_size=0.2, random_state=7)
+models = SharedDeepCNNwithShape(shape1=input_shape2, )
+# KF = StratifiedKFold(n_splits=5, shuffle=True, random_state=seed)
+pred=models.predict(x_val)
+accur=acc(y_val,pred)
+
+models.save('../final_model/model/highway_M/'+str(motif)+'one_enactrymodel'+str(accur)+'.h5')
+print('model save')
+
 
